@@ -1,2 +1,2 @@
-# idk
-我不知道我写这玩意干啥，但看起来好像还挺好玩的样子...
+# I don't know
+I don't know why I wrote them. But they seems to interesting🤔
