@@ -8,7 +8,8 @@ class not_std{
 public:
     template<typename RandomAccessIterator>
     _GLIBCXX20_CONSTEXPR
-    inline static void nstl_sort(RandomAccessIterator first, RandomAccessIterator last){
+    inline static void nstl_sort(RandomAccessIterator first, RandomAccessIterator last)
+    {
         _sort(first,last);
     }
 private:
@@ -19,7 +20,7 @@ private:
     {
         if (_first != _last)
             for(RandomAccessIterator _i = _first;_i != _last;_i++)
-                *_i = 0LL;//Guesss
+                *_i = 0LL;
     }
 };
 
