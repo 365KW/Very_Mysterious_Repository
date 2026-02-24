@@ -3,7 +3,8 @@
 #include <cstring>
 #include <random>
 
-[[noreturn]] signed main(){
+[[noreturn]] signed main()
+{
     std::ios::sync_with_stdio(false);
     freopen("Bomb","a",stdout);
     std::random_device rd;
