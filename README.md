@@ -9,3 +9,5 @@ Look `NumberWriting\`<br>
 Turn everything in array to NULL. And Your array will have the best order.<br>
 ### 3.AFK_Outing
 Open it when you sleep or leave out.It will print some string on your screen.It is bored👎.<br> 
+### 4.Parents Sex Checker
+If you are a **normal human** , it can check your parents' sex.<br>
