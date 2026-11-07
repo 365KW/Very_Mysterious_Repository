@@ -3,45 +3,46 @@
 #include <time.h>
 #include <string.h>
 
-const int questions_num = 4;
-const int questions_length = 5005;
+enum { Q_NUM = 4, Q_LEN = 64 }; 
 
-const char question[questions_num][questions_length] = {
+static const char question[Q_NUM][Q_LEN] = {
     "",
     "Have you breathed?",
-    "Have you had dinner today?", 
+    "Have you had dinner today?",
     "Have you slept today?"
 };
 
-int is_asked[questions_num];
+static unsigned asked;
+
+static int is_asked(int i) { return (asked >> i) & 1u; } // 0 -> checked; 1 -> no checked
+
+static void mark_asked(int i) { asked |= 1u << i; }
 
 void start_ask() {
-    int times = questions_num / 2;
-    is_asked[0] = 1;
+  char answer;
+  int times = Q_NUM / 2;
+  mark_asked(0);
 
-    srand((unsigned int)time(NULL));
+  srand((unsigned int)time(NULL));
 
-    while (times--) {
-        int cur_q_num;
-        char answer;
-
-        do {
-            cur_q_num = rand() % questions_num;
-        } while (is_asked[cur_q_num]);
-        
-        is_asked[cur_q_num] = 1;
-
-        printf("%s [Y/N]: ", question[cur_q_num]);
-
-        scanf(" %c", &answer);
-        printf("Great!\n");
-    }
+  while (times--) {
+    int cur;
+    do {
+      cur = rand() % Q_NUM;
+    } while (is_asked(cur));
+    
+    mark_asked(cur);
+    printf("%s [Y/N]: ", question[cur]);
+    
+    scanf(" %c", &answer);
+    printf("Great!\n");
+  }
 }
 
 void print_answer() {
     printf("Checking...\n");
     clock_t start = clock();
-    while ((clock() - start) < 9000);
+    while ((clock() - start) < 9 * CLOCKS_PER_SEC);
     printf("Here is \nYour Father : Male\nYour Mother : Female\n");
 }
 
